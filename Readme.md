@@ -45,3 +45,5 @@ python3 manage.py migrate
 
 6. Implemented user authentication and restricted access to student records
 
+7. Added search functionality for student list by name
+
