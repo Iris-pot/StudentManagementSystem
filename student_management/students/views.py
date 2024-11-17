@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from .models import Student
 from .forms import StudentForm
 
@@ -9,6 +10,12 @@ def student_list(request):
         students = Student.objects.filter(first_name__icontains=query) | Student.objects.filter(last_name__icontains=query)
     else:
         students = Student.objects.all()
+
+    # Pagination
+    paginator = Paginator(students, 10)  # Show 10 students per page
+    page_number = request.GET.get('page')
+    students = paginator.get_page(page_number)
+
     return render(request, 'students/student_list.html', {'students': students, 'query': query})
 
 def student_detail(request, pk):

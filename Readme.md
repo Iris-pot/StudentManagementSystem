@@ -47,3 +47,4 @@ python3 manage.py migrate
 
 7. Added search functionality for student list by name
 
+8. Implemented pagination for student list
