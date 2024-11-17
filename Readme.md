@@ -37,4 +37,5 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
+3. Registered Student model in admin panel
 
