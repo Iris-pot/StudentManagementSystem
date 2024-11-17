@@ -40,3 +40,7 @@ python3 manage.py migrate
 3. Registered Student model in admin panel
 
 4. Added views and templates
+
+5. Added form validations for email and grade in StudentForm
+
+6. 
