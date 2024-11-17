@@ -1,9 +1,17 @@
+<!-- students/templates/students/student_form.html -->
 {% extends 'base.html' %}
 
 {% block content %}
     <h1>{% if form.instance.pk %}Edit Student{% else %}Add Student{% endif %}</h1>
     <form method="POST">
         {% csrf_token %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="alert {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>

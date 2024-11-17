@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Student
 from .forms import StudentForm
+from django.contrib import messages
+
 
 def student_list(request):
     query = request.GET.get('q')
@@ -28,7 +30,10 @@ def student_add(request):
         form = StudentForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Student added successfully.")
             return redirect('student_list')
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
         form = StudentForm()
     return render(request, 'students/student_form.html', {'form': form})
@@ -40,7 +45,10 @@ def student_edit(request, pk):
         form = StudentForm(request.POST, instance=student)
         if form.is_valid():
             form.save()
+            messages.success(request, "Student updated successfully.")
             return redirect('student_list')
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
         form = StudentForm(instance=student)
     return render(request, 'students/student_form.html', {'form': form})
