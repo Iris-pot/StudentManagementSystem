@@ -39,3 +39,4 @@ python3 manage.py migrate
 
 3. Registered Student model in admin panel
 
+4. Added views and templates
