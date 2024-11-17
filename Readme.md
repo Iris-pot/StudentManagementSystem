@@ -43,4 +43,5 @@ python3 manage.py migrate
 
 5. Added form validations for email and grade in StudentForm
 
-6. 
+6. Implemented user authentication and restricted access to student records
+
