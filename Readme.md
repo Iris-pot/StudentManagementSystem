@@ -1,52 +1,66 @@
 # Student Management System
 
+This is a web-based application built with the Django framework for managing student information, grades, and other academic data.
 
-1. Project Setup
-Create a virtual environment:
+## Features
+
+	•	Student Management: Add, update, and delete student records.
+	•	Grade Assignment: Assign grades between 1 and 12 to students.
+	•	User Authentication: Secure login system for administrators.
+	•	Responsive Design: User-friendly interface with responsive design.
+
+## Prerequisites
+
+	•	Python: Version 3.x
+	•	Django: Version 3.x or higher
+	•	Virtual Environment: Recommended for dependency management
+
+
+## How to Start
+
+1. Clone the Repository
+```
+git clone https://github.com/Mingyang096/StudentManagementSystem.git
+cd StudentManagementSystem
+```
+
+2. Create a virtual environment
 ```
 python3 -m venv student_env
 source student_env/bin/activate
 ```
-start django
-```
-pip3 install django
-django-admin startproject student_management
 
-cd student_management
+3. Install Dependencies
+```
+pip install -r requirements.txt
+```
+
+4. Apply Migrations
+
+```
 python3 manage.py migrate
-python3 manage.py createsuperuser
+```
+
+5. Create a Superuser
+
+```
+python manage.py createsuperuser
+```
+When prompted, enter the following details:
+
+	•	Username
+	•	Email address
+	•	Password
+
+## How to Run Locally
+
+Run the application locally by executing:
+```
 python3 manage.py runserver
 ```
 
-note:
+Then navigate to:
 ```
-Username (leave blank to use 'mingyang'): mingyang
-Email address: zmyswufe@gmail.com
-Password: mingyang
+http://127.0.0.1:8000/admin/
 ```
-
-2. Added Student model in student_model app
-
-```
-python3 manage.py startapp students
-```
-Add 'students' to the INSTALLED_APPS list in the student_management/settings.py file.
-
-```
-python3 manage.py makemigrations
-python3 manage.py migrate
-```
-
-3. Registered Student model in admin panel
-
-4. Added views and templates
-
-5. Added form validations for email and grade in StudentForm
-
-6. Implemented user authentication and restricted access to student records
-
-7. Added search functionality for student list by name
-
-8. Implemented pagination for student list
-
-9. Implemented error handling and validation
+Use your admin credentials to log in. Then you can access the Django admin panel to manage students and other models.

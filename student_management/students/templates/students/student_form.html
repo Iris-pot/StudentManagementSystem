@@ -1,5 +1,43 @@
-<!-- students/templates/students/student_form.html -->
 {% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% if form.instance.pk %}Edit Student{% else %}Add Student{% endif %}</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Display general messages (success or error) -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="alert {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Display form errors if any -->
+        {% if form.errors %}
+            <ul class="error-messages">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Render the form fields -->
+        {{ form.as_p }}
+
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'student_list' %}">Back to list</a>
+{% endblock %}
+
+
+<!-- {% extends 'base.html' %}
 
 {% block content %}
     <h1>{% if form.instance.pk %}Edit Student{% else %}Add Student{% endif %}</h1>
@@ -16,4 +54,4 @@
         <button type="submit">Save</button>
     </form>
     <a href="{% url 'student_list' %}">Back to list</a>
-{% endblock %}
+{% endblock %} -->

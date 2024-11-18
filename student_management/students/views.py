@@ -28,12 +28,15 @@ def student_detail(request, pk):
 def student_add(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
+        form.full_clean()  # This forces validation and can help identify issues
+
         if form.is_valid():
             form.save()
             messages.success(request, "Student added successfully.")
             return redirect('student_list')
         else:
             messages.error(request, "Please correct the errors below.")
+            print(form.errors)  # Print errors for debugging
     else:
         form = StudentForm()
     return render(request, 'students/student_form.html', {'form': form})
@@ -48,6 +51,7 @@ def student_edit(request, pk):
             messages.success(request, "Student updated successfully.")
             return redirect('student_list')
         else:
+            print(form.errors)
             messages.error(request, "Please correct the errors below.")
     else:
         form = StudentForm(instance=student)
