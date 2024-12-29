@@ -1,5 +1,8 @@
 # Student Management System
 
+**Note**: This repository is a migration from the original repository at [https://github.com/Mingyang096/StudentManagementSystem](https://github.com/Mingyang096/StudentManagementSystem). If you were following the previous repository, please consider starring this one to stay updated!
+
+
 This is a web-based application built with the Django framework for managing student information, grades, and other academic data.
 
 ## Features
